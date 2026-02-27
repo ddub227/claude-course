@@ -1,0 +1,520 @@
+# ============================================================
+# Claude Code Mastery (CCM) - Course Configuration
+# ============================================================
+# Machine-readable source of truth for the entire course.
+# All module definitions, weights, dependencies, and system
+# integration mappings live here.
+# ============================================================
+
+course:
+  name: "Claude Code Mastery"
+  short_name: "CCM"
+  version: "1.0.0"
+  created: "2026-02-27"
+  author: "JayBrain"
+  description: >
+    Complete mastery curriculum for Claude Code CLI.
+    27 modules across 5 tiers covering every feature,
+    configuration pattern, and advanced architecture.
+  target_audience: "Developers and power users seeking full Claude Code expertise"
+  estimated_hours: 40-60
+
+# -- SynapseForge Integration --
+forge:
+  subject_id: "dd261837f042"
+  pass_score: 0.95
+  mastery_levels:
+    spark:    { min: 0.00, max: 0.20, label: "Spark",    description: "Just getting started" }
+    ember:    { min: 0.20, max: 0.40, label: "Ember",    description: "Building heat" }
+    flame:    { min: 0.40, max: 0.60, label: "Flame",    description: "Gaining momentum" }
+    blaze:    { min: 0.60, max: 0.80, label: "Blaze",    description: "Seriously cooking" }
+    inferno:  { min: 0.80, max: 0.95, label: "Inferno",  description: "Near mastery" }
+    forged:   { min: 0.95, max: 1.00, label: "FORGED",   description: "Complete mastery" }
+
+# -- Quiz Protocol --
+quiz:
+  style: "Tim Dillon comedian energy at 10x"
+  emojis: true
+  emojis_in_code: false
+  question_format: "multiple_choice"
+  options: ["A", "B", "C", "D"]
+  special_options:
+    E: "I don't know"
+    F: "Question previous question"
+  answer_format: "[letter][confidence 1-5]"
+  answer_example: "B4"
+  numbering: "cumulative_across_sessions"
+  correct_answer_randomization: true
+  max_same_letter_streak: 2
+  stats_display: "after_every_question"
+  full_dashboard: "every_10_questions"
+  pause_commands:
+    SIDEQUEST: "Pause quiz, answer question, resume"
+    TIMEOUT: "Pause for meta/process discussion, resume"
+    F: "Pin current question, allow discussion, resume with pinned question"
+
+# -- Logging Pipeline --
+logging:
+  layer_1_forge:
+    enabled: true
+    tracks: ["quiz_answers", "confidence", "mastery", "error_patterns", "spaced_repetition"]
+    scoring:
+      correct_confident:   { confidence_min: 4, delta: "+0.20", signal: "strong" }
+      correct_unsure:      { confidence_max: 3, delta: "+0.10", signal: "moderate" }
+      incorrect_confident:  { confidence_min: 4, delta: "-0.15", signal: "misconception" }
+      incorrect_unsure:     { confidence_max: 3, delta: "-0.05", signal: "expected_gap" }
+    error_types: ["slip", "lapse", "mistake", "misconception"]
+
+  layer_2_memories:
+    enabled: true
+    auto_remember:
+      key_learnings: { category: "semantic", importance: 0.7 }
+      aha_moments: { category: "episodic", importance: 0.8 }
+      misconceptions: { category: "episodic", importance: 0.9 }
+      workflow_patterns: { category: "procedural", importance: 0.7 }
+      decisions: { category: "decision", importance: 0.7 }
+
+  layer_3_progress_doc:
+    enabled: true
+    gdoc_id: "1r_N1zutOFBOcWdZHespSMb8NrB0Bwb-y0UVwO1OX4mQ"
+    gdrive_folder: "Claude_Course"
+    updates: ["module_completion", "mastery_scores", "domain_breakdown", "milestones"]
+
+# -- Domains --
+domains:
+  - id: "1.0"
+    name: "Foundations"
+    weight: 0.25
+    description: "Core CLI usage, settings, memory, and permissions"
+
+  - id: "2.0"
+    name: "Intermediate"
+    weight: 0.25
+    description: "Models, context, git, MCP, hooks, and sandboxing"
+
+  - id: "3.0"
+    name: "Advanced"
+    weight: 0.25
+    description: "Subagents, skills, SDK, remote, browser, plugins, and teams"
+
+  - id: "4.0"
+    name: "Expert"
+    weight: 0.15
+    description: "Enterprise config, CI/CD, cost optimization, debugging, and architecture"
+
+  - id: "5.0"
+    name: "Mastery"
+    weight: 0.10
+    description: "Building MCP servers, Agent SDK, vim mastery, and capstone"
+
+# -- Modules (27 total) --
+modules:
+  # ---- TIER 1: FOUNDATIONS ----
+  - id: "M01"
+    code: "1.1"
+    title: "The CLI — Every Flag, Every Argument"
+    domain: "1.0"
+    weight: 0.06
+    forge_objective_id: "8b6167466b58"
+    prerequisites: []
+    estimated_hours: 2.0
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "Session start modes (claude, -p, -c, -r)"
+      - "50+ CLI flags"
+      - "Print mode vs interactive mode"
+      - "Subcommands (update, auth, mcp, agents)"
+
+  - id: "M02"
+    code: "1.2"
+    title: "Interactive Mode — Slash Commands & Keyboard Shortcuts"
+    domain: "1.0"
+    weight: 0.05
+    forge_objective_id: "76a1d83449f2"
+    prerequisites: ["M01"]
+    estimated_hours: 1.5
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "25+ slash commands"
+      - "All keyboard shortcuts (Ctrl, Alt, Shift combos)"
+      - "Multiline input methods"
+      - "Bang mode, @ mentions, / autocomplete"
+
+  - id: "M03"
+    code: "1.3"
+    title: "The Settings Universe"
+    domain: "1.0"
+    weight: 0.05
+    forge_objective_id: "02c432c40c00"
+    prerequisites: ["M01"]
+    estimated_hours: 2.0
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "4 settings scopes and precedence"
+      - "File locations per scope"
+      - "All settings fields"
+      - "40+ environment variables"
+
+  - id: "M04"
+    code: "1.4"
+    title: "Memory — CLAUDE.md, Auto-Memory & Rules"
+    domain: "1.0"
+    weight: 0.05
+    forge_objective_id: "3919cfed51d2"
+    prerequisites: ["M03"]
+    estimated_hours: 2.0
+    bloom_levels: ["remember", "understand", "apply", "analyze"]
+    key_topics:
+      - "Memory hierarchy (5 levels)"
+      - "CLAUDE.md vs CLAUDE.local.md vs auto-memory"
+      - "Imports with @ syntax"
+      - "Modular rules with glob patterns"
+
+  - id: "M05"
+    code: "1.5"
+    title: "Permissions — The Security Model"
+    domain: "1.0"
+    weight: 0.04
+    forge_objective_id: "58737b2aa7d9"
+    prerequisites: ["M03"]
+    estimated_hours: 1.5
+    bloom_levels: ["remember", "understand", "apply", "analyze"]
+    key_topics:
+      - "5 permission modes"
+      - "Rule syntax (tool, specifier, wildcards)"
+      - "allow/ask/deny evaluation order"
+      - "Mode switching methods"
+
+  # ---- TIER 2: INTERMEDIATE ----
+  - id: "M06"
+    code: "2.1"
+    title: "Model Selection & Thinking"
+    domain: "2.0"
+    weight: 0.04
+    forge_objective_id: "e606f04c98e7"
+    prerequisites: ["M03"]
+    estimated_hours: 1.5
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "Model aliases and capabilities"
+      - "Effort levels (Opus)"
+      - "Extended thinking toggle and budget"
+      - "1M context mode, fallback models"
+
+  - id: "M07"
+    code: "2.2"
+    title: "Context Management — The Hidden Art"
+    domain: "2.0"
+    weight: 0.05
+    forge_objective_id: "437e82e58958"
+    prerequisites: ["M04", "M06"]
+    estimated_hours: 2.0
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "/context visualization"
+      - "What consumes context (and how much)"
+      - "Manual and auto compaction"
+      - "Context optimization strategies"
+
+  - id: "M08"
+    code: "2.3"
+    title: "Git Integration & Worktrees"
+    domain: "2.0"
+    weight: 0.03
+    forge_objective_id: "07854fd3c1c8"
+    prerequisites: ["M01"]
+    estimated_hours: 1.5
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "Branch awareness, diff, commit"
+      - "Worktree creation and isolation"
+      - "Worktree memory and cleanup"
+      - "PR workflows with --from-pr"
+
+  - id: "M09"
+    code: "2.4"
+    title: "MCP Server Integration"
+    domain: "2.0"
+    weight: 0.05
+    forge_objective_id: "2f66a6398a84"
+    prerequisites: ["M03"]
+    estimated_hours: 2.5
+    bloom_levels: ["remember", "understand", "apply", "analyze"]
+    key_topics:
+      - "MCP protocol fundamentals"
+      - "Transport types (HTTP, stdio)"
+      - "Server configuration and scopes"
+      - "Tool Search, OAuth, managed MCP"
+
+  - id: "M10"
+    code: "2.5"
+    title: "Hooks — Event-Driven Automation"
+    domain: "2.0"
+    weight: 0.05
+    forge_objective_id: "0d3f79fad578"
+    prerequisites: ["M03", "M05"]
+    estimated_hours: 2.5
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "15 hook events"
+      - "4 handler types"
+      - "Exit codes and control flow"
+      - "Matcher syntax and chaining"
+
+  - id: "M11"
+    code: "2.6"
+    title: "Sandboxing"
+    domain: "2.0"
+    weight: 0.03
+    forge_objective_id: "3a3c61e65244"
+    prerequisites: ["M05"]
+    estimated_hours: 1.0
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "What is and isn't sandboxed"
+      - "Filesystem and network allowlists"
+      - "Configuration options"
+      - "Auto-allow with sandbox"
+
+  # ---- TIER 3: ADVANCED ----
+  - id: "M12"
+    code: "3.1"
+    title: "Subagents — Delegation & Parallelism"
+    domain: "3.0"
+    weight: 0.05
+    forge_objective_id: "e049d5028445"
+    prerequisites: ["M05", "M09"]
+    estimated_hours: 2.5
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Built-in agents (Explore, Plan, General)"
+      - "Custom agent files (YAML frontmatter)"
+      - "Foreground vs background, context isolation"
+      - "Agent memory, restrictions, lifecycle hooks"
+
+  - id: "M13"
+    code: "3.2"
+    title: "Skills — Reusable Workflows"
+    domain: "3.0"
+    weight: 0.05
+    forge_objective_id: "2c691da47913"
+    prerequisites: ["M05", "M12"]
+    estimated_hours: 2.0
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "SKILL.md format and location hierarchy"
+      - "String substitutions ($ARGUMENTS, shell preprocessing)"
+      - "Control options (model invocation, tools, forking)"
+      - "Agent-backed skills"
+
+  - id: "M14"
+    code: "3.3"
+    title: "Headless/SDK Mode — Programmatic Claude"
+    domain: "3.0"
+    weight: 0.04
+    forge_objective_id: "fa630642b4fd"
+    prerequisites: ["M01", "M05"]
+    estimated_hours: 2.0
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Print mode for scripting"
+      - "Output formats (text, json, stream-json)"
+      - "JSON schema validation"
+      - "Session chaining, piping, safety rails"
+
+  - id: "M15"
+    code: "3.4"
+    title: "Remote & Web Sessions"
+    domain: "3.0"
+    weight: 0.03
+    forge_objective_id: "e03640a6fc17"
+    prerequisites: ["M01"]
+    estimated_hours: 1.0
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "Remote Control from browser"
+      - "Web sessions with --remote"
+      - "Teleport between CLI and web"
+      - "Desktop handoff"
+
+  - id: "M16"
+    code: "3.5"
+    title: "Browser Automation"
+    domain: "3.0"
+    weight: 0.03
+    forge_objective_id: "1b2fbf42f0b2"
+    prerequisites: ["M01"]
+    estimated_hours: 1.5
+    bloom_levels: ["remember", "understand", "apply"]
+    key_topics:
+      - "Browser tool suite"
+      - "Accessibility tree and ref targeting"
+      - "Session persistence"
+      - "Stealth mode (Patchright)"
+
+  - id: "M17"
+    code: "3.6"
+    title: "Plugins & Marketplaces"
+    domain: "3.0"
+    weight: 0.02
+    forge_objective_id: "a18fc1c3a2c3"
+    prerequisites: ["M09"]
+    estimated_hours: 1.0
+    bloom_levels: ["remember", "understand"]
+    key_topics:
+      - "Plugin structure and plugin.json"
+      - "Installing and managing plugins"
+      - "Marketplaces (official and custom)"
+      - "Enterprise controls"
+
+  - id: "M18"
+    code: "3.7"
+    title: "Agent Teams — Parallel Coordination"
+    domain: "3.0"
+    weight: 0.03
+    forge_objective_id: "cf01935b2a41"
+    prerequisites: ["M12"]
+    estimated_hours: 1.5
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Teams vs subagents"
+      - "Teammate modes (auto, in-process, tmux)"
+      - "Task assignment and synthesis"
+      - "When to use which pattern"
+
+  # ---- TIER 4: EXPERT ----
+  - id: "M19"
+    code: "4.1"
+    title: "Enterprise & Managed Configuration"
+    domain: "4.0"
+    weight: 0.03
+    forge_objective_id: "066b7e72d50c"
+    prerequisites: ["M03", "M05", "M09"]
+    estimated_hours: 1.5
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Managed settings paths"
+      - "Managed MCP policies"
+      - "Model restrictions for teams"
+      - "Compliance and audit hooks"
+
+  - id: "M20"
+    code: "4.2"
+    title: "CI/CD Integration"
+    domain: "4.0"
+    weight: 0.04
+    forge_objective_id: "28deba3ea516"
+    prerequisites: ["M14"]
+    estimated_hours: 2.0
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Headless mode in pipelines"
+      - "Budget and turn limits"
+      - "Structured output for parsing"
+      - "GitHub Actions / GitLab CI patterns"
+
+  - id: "M21"
+    code: "4.3"
+    title: "Cost Optimization & Performance Tuning"
+    domain: "4.0"
+    weight: 0.03
+    forge_objective_id: "e2625f818e18"
+    prerequisites: ["M06", "M07", "M12"]
+    estimated_hours: 1.5
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Token economics"
+      - "Model selection strategy"
+      - "Context optimization"
+      - "Caching and pricing tiers"
+
+  - id: "M22"
+    code: "4.4"
+    title: "Debugging & Troubleshooting"
+    domain: "4.0"
+    weight: 0.03
+    forge_objective_id: "aaf51ea63312"
+    prerequisites: ["M03", "M09", "M10"]
+    estimated_hours: 1.5
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "/doctor and /debug commands"
+      - "Debug mode with category filtering"
+      - "MCP and hook debugging"
+      - "Common failure modes"
+
+  - id: "M23"
+    code: "4.5"
+    title: "Advanced Patterns & Architectures"
+    domain: "4.0"
+    weight: 0.02
+    forge_objective_id: "ad6e46ce8b30"
+    prerequisites: ["M10", "M12", "M13"]
+    estimated_hours: 2.0
+    bloom_levels: ["analyze"]
+    key_topics:
+      - "Multi-agent orchestration"
+      - "Skill and hook composition"
+      - "MCP server chaining"
+      - "Session continuity patterns"
+
+  # ---- TIER 5: MASTERY ----
+  - id: "M24"
+    code: "5.1"
+    title: "Building Custom MCP Servers"
+    domain: "5.0"
+    weight: 0.04
+    forge_objective_id: "e181b8a7ef49"
+    prerequisites: ["M09"]
+    estimated_hours: 3.0
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "MCP protocol deep dive"
+      - "Building stdio and HTTP servers"
+      - "Tool definitions and schemas"
+      - "Testing, debugging, publishing"
+
+  - id: "M25"
+    code: "5.2"
+    title: "The Claude Agent SDK"
+    domain: "5.0"
+    weight: 0.03
+    forge_objective_id: "70aaf2d065e3"
+    prerequisites: ["M12", "M14"]
+    estimated_hours: 3.0
+    bloom_levels: ["understand", "apply", "analyze"]
+    key_topics:
+      - "Programmatic agent creation"
+      - "Custom agent loops with tool use"
+      - "Multi-agent coordination in code"
+      - "Application integration"
+
+  - id: "M26"
+    code: "5.3"
+    title: "Vim Mode Deep Dive"
+    domain: "5.0"
+    weight: 0.01
+    forge_objective_id: "a57b6425e0c5"
+    prerequisites: ["M02"]
+    estimated_hours: 1.0
+    bloom_levels: ["remember", "apply"]
+    key_topics:
+      - "All vim keybindings"
+      - "Mode transitions"
+      - "Operators, motions, text objects"
+      - "Custom keybindings"
+
+  - id: "M27"
+    code: "5.4"
+    title: "Capstone Project"
+    domain: "5.0"
+    weight: 0.02
+    forge_objective_id: "2f9c6b6ccf42"
+    prerequisites: ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13", "M14"]
+    estimated_hours: 4.0
+    bloom_levels: ["analyze"]
+    key_topics:
+      - "Design complete Claude Code environment"
+      - "Custom agents, skills, hooks, MCP, permissions"
+      - "Document as reusable template"
+      - "Teach it to validate mastery"
