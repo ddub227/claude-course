@@ -1,24 +1,24 @@
 # Claude Code Mastery (CCM)
 
-A comprehensive, production-grade curriculum for achieving complete mastery of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's CLI for Claude.
+A comprehensive, production-grade curriculum for achieving complete mastery of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's CLI for Claude — with a **vibe coding first** approach.
 
-**27 modules. 5 tiers. 95% mastery target.**
+**27 modules. 5 tiers. 95% mastery target. Vibe Coder Edition.**
 
 ---
 
 ## What Is This?
 
-Claude Code Mastery is a structured learning program covering every feature, configuration option, and advanced pattern in Claude Code CLI. It progresses from foundational CLI usage through enterprise architecture and custom tooling.
+Claude Code Mastery is a structured learning program that teaches you to become a **master vibe coder** first, then covers every technical detail second. Vibe coding = describing what you want in natural language and letting Claude build it. This curriculum teaches you to do that at an expert level, then layers on the deep technical knowledge.
 
 ## Course Structure
 
 | Tier | Modules | Focus | Weight |
 |------|---------|-------|--------|
-| 1. Foundations | M01-M05 | CLI, settings, memory, permissions | 25% |
-| 2. Intermediate | M06-M11 | Models, context, git, MCP, hooks, sandbox | 25% |
-| 3. Advanced | M12-M18 | Subagents, skills, SDK, remote, browser, teams | 25% |
-| 4. Expert | M19-M23 | Enterprise, CI/CD, cost, debugging, architecture | 15% |
-| 5. Mastery | M24-M27 | Building MCP servers, Agent SDK, vim, capstone | 10% |
+| 1. Vibe Coding Foundations | M01-M05 | Environment, prompting, context, memory, permissions | 30% |
+| 2. Scaling Your Vibe | M06-M10 | Agents, skills, git, MCP, hooks | 25% |
+| 3. Power Moves | M11-M16 | Multi-agent, models, headless, browser, remote, debug | 20% |
+| 4. The Deep Cuts | M17-M22 | CLI flags, slash commands, settings, cost, enterprise | 15% |
+| 5. Mastery | M23-M27 | Building MCP servers, Agent SDK, plugins, vim, capstone | 10% |
 
 ## Quick Start
 

@@ -30,6 +30,36 @@ Tim Dillon energy is the delivery vehicle. **Education is the cargo.** Every int
 
 If the learner walks away entertained but didn't learn anything, the instruction failed.
 
+### Bite-Size Micro-Lessons (MANDATORY)
+
+- **ONE concept per bite.** Teach ONE flag, ONE idea, ONE command. Then TEST it immediately. Then move to the next. Never dump 4+ concepts without interaction.
+- **Assume zero prior knowledge.** Over-explain. If JJ already knows it, he'll say so.
+- **Conversational tone** — talk TO JJ like a friend at a bar. "So picture this..." not "The following describes..."
+
+### Real-Life Examples (MANDATORY)
+
+- Every concept gets a REAL scenario. Not "you could do this" but "You're a developer who just got paged at 2am..." or "Your boss just asked you to..." Show WHY someone would actually use this in their life.
+
+### Visual Design (MANDATORY)
+
+- **HEAVY visual separation.** Use emoji dividers, horizontal rules (---), ASCII art, box-drawing characters, emoji borders. JJ gets snow-blind when text runs together. Every concept needs visual breathing room.
+- Emojis and graphics EVERYWHERE. Make messages visually alive.
+
+### Mixed Testing Formats (MANDATORY)
+
+- Test after EVERY bite-size chunk. MIX UP formats creatively:
+  - Multiple choice (A/B/C/D)
+  - Fill in the blank
+  - "What would you type if..." scenarios
+  - True/False
+  - "Spot the error" in a command
+  - Creative/fun formats — get weird
+- MAKE IT FUN. Tim Dillon 10x. If JJ isn't laughing AND learning, it failed.
+
+### Hide Internal Bookkeeping (MANDATORY)
+
+All SynapseForge concept additions (forge_add), tool result outputs, and internal tracking calls MUST be batched into background Task agents so JJ never sees the raw MCP tool output on screen. The learning experience must be CLEAN.
+
 ---
 
 ## Module Delivery Protocol
@@ -99,56 +129,60 @@ These are NON-NEGOTIABLE. Violating them is a course integrity failure.
 
 ---
 
-## Per-Module Teaching Notes
+## Per-Module Teaching Notes (v2.0.0 — Vibe Coder Edition)
 
-### Module 1: CLI Flags & Arguments
-- **Common misconception:** `-p` and interactive mode are interchangeable (they're not)
-- **Gotcha:** `--system-prompt` REPLACES the default, `--append-system-prompt` ADDS to it
-- **Key insight:** The number of flags is overwhelming. Group them by category: session, model, output, permissions, MCP, debug
-- **Analogy ideas:** CLI flags as "dials on a mixing board" — each one tunes a different aspect
+### Module 1: Your First Vibe — Environment Setup
+- **Common misconception:** You can vibe code effectively without any setup (CLAUDE.md changes EVERYTHING)
+- **Gotcha:** CLAUDE.md is team-shared; CLAUDE.local.md is personal — don't put personal preferences in the wrong one
+- **Key insight:** The single biggest difference between a frustrating and a magical vibe coding session is whether Claude KNOWS your project
+- **Analogy ideas:** CLAUDE.md as "the project manual you give a new contractor on day one"
+- **Exercise focus:** Before/after comparison — same prompt, with and without CLAUDE.md
+- **Vibe coder angle:** This is the foundation. Get this right and everything else compounds.
 
-### Module 2: Slash Commands & Shortcuts
-- **Common misconception:** All slash commands are built-in (some are skills)
-- **Gotcha:** `Esc+Esc` does different things depending on context (rewind vs summarize)
-- **Key insight:** `!` bash mode and `@` file mentions are the most underused power features
-- **Exercise focus:** Speed drills — how fast can you navigate a session with just shortcuts?
+### Module 2: The Art of the Ask — Prompt Mastery
+- **Common misconception:** Longer prompts are better (often the opposite)
+- **Gotcha:** Plan mode (`/plan`) makes Claude think before coding — game changer for complex features
+- **Key insight:** The best vibe coders communicate INTENT and CONSTRAINTS, not implementation details
+- **Exercise focus:** Build a real feature using only natural language — zero manual code
+- **Vibe coder angle:** THIS is the core skill. Everything else is optimization.
 
-### Module 3: Settings Universe
-- **Common misconception:** Project settings override user settings (it's the opposite — managed > user > project > local, but local is LOWEST priority for settings, highest for memory)
-- **Gotcha:** `.claude/settings.local.json` is gitignored by convention but not automatically
-- **Key insight:** The 4-scope system means you can have team defaults with personal overrides
-- **This is a LONG module** — break into two sessions if needed
+### Module 3: Context is King — Session Management
+- **Common misconception:** Context window is just conversation history (it includes CLAUDE.md, MCP tools, file reads, everything)
+- **Gotcha:** MCP tool definitions eat context even when not used
+- **Key insight:** This is THE skill that separates beginners from masters. A master vibe coder manages context like a precious resource.
+- **Exercise focus:** Monitor /context across a real task, compact strategically
 
-### Module 4: Memory System
+### Module 4: Memory Architecture
 - **Common misconception:** CLAUDE.md and auto-memory are the same thing
 - **Gotcha:** MEMORY.md only loads first 200 lines — keep it as an index, not a dump
 - **Key insight:** The `@` import system creates a dependency tree up to 5 levels deep
 - **Exercise focus:** Design a 3-tier memory architecture for a real project
 
-### Module 5: Permissions
+### Module 5: Frictionless Flow — Permissions & Sandboxing
 - **Common misconception:** Allow rules override deny (deny ALWAYS wins)
 - **Gotcha:** Wildcard patterns in tool specifiers — `Bash(npm run *)` vs `Bash(npm *)`
-- **Key insight:** Permission rules are evaluated first-match, so order matters within each tier
-- **Exercise focus:** Write permission rules, predict what's allowed/denied, then test
+- **Key insight:** The right permission setup turns Claude from an assistant that asks permission for EVERYTHING into one that just WORKS
+- **Exercise focus:** Configure permissions, then vibe code for 10 minutes — feel the difference
+- **Vibe coder angle:** Friction kills flow state. This module eliminates friction.
 
-### Module 6: Model Selection
-- **Common misconception:** Opus is always better than Sonnet (not for speed/cost-sensitive tasks)
-- **Gotcha:** `opusplan` uses Opus for planning, Sonnet for execution — hybrid approach
-- **Key insight:** Extended thinking costs tokens but dramatically improves complex reasoning
-- **Exercise focus:** Same task with 3 models — compare output quality, speed, cost
+### Module 6: Delegation — Agents & Subagents
+- **Common misconception:** Subagents share the parent's context window (they don't — that's the POINT)
+- **Gotcha:** Agent memory scope affects what persists
+- **Key insight:** Subagents let you tackle tasks that would overflow a single context window
+- **Exercise focus:** Build 3 specialized agents from scratch
+- **Vibe coder angle:** This is how you scale from "one feature" to "full application"
 
-### Module 7: Context Management
-- **Common misconception:** Context window is just conversation history
-- **Gotcha:** MCP tool definitions eat context even when not used
-- **Key insight:** This is THE skill that separates beginners from experts
-- **Exercise focus:** Monitor /context across a real task, identify the biggest consumers
+### Module 7: Skills — Your Personal Command Library
+- **Common misconception:** Skills are just prompt templates (they can spawn agents, fork context, restrict tools)
+- **Gotcha:** `$ARGUMENTS` vs `$0` vs `$1` — positional arg parsing
+- **Key insight:** Skills + agents + hooks = reusable workflow packages
+- **Vibe coder angle:** Build once, use forever. Your most common tasks become one-word commands.
 
-### Module 8: Git & Worktrees
-- **Common misconception:** Worktrees share memory with the main branch
-- **Key insight:** Worktrees enable parallel feature development without branch switching
-- **Exercise focus:** Create worktree, make changes, demonstrate isolation
+### Module 8: Git Flow
+- **Key insight:** A vibe coder never manually runs git commands — Claude handles it all
+- **Exercise focus:** End-to-end: describe feature → Claude builds + commits + creates PR
 
-### Module 9: MCP Integration
+### Module 9: MCP Servers
 - **Common misconception:** MCP servers are just API wrappers
 - **Gotcha:** Environment variable expansion with `${VAR:-default}` syntax
 - **Key insight:** MCP is what makes Claude Code extensible — this is the plugin architecture
@@ -157,43 +191,25 @@ These are NON-NEGOTIABLE. Violating them is a course integrity failure.
 ### Module 10: Hooks
 - **Common misconception:** Hooks are just logging tools
 - **Gotcha:** Exit code 2 blocks the operation, exit code 1 logs an error but continues
-- **Key insight:** Hooks + permissions + MCP = a complete automation framework
-- **Exercise focus:** Build progressively complex hooks — start with logging, end with blocking
+- **Key insight:** Hooks + permissions + MCP = a safety net that catches mistakes automatically
+- **Vibe coder angle:** Hooks let you vibe code FEARLESSLY — quality checks run silently
 
-### Module 11: Sandboxing
-- **Common misconception:** Everything is sandboxed (only Bash tool)
-- **Key insight:** Sandboxing enables `autoAllowBashIfSandboxed` — a game changer for workflow speed
-- **Exercise focus:** Enable sandbox, test boundaries, configure allowlists
+### Modules 11-16: Power Moves
+- **Key insight for all:** These compound on the Tier 1-2 foundation
+- **Focus on WHEN to use each** rather than exhaustive syntax drilling
+- **Model Selection:** The right model for the right job saves money AND improves results
+- **Headless/SDK:** When you need Claude in a pipeline, not a conversation
 
-### Module 12: Subagents
-- **Common misconception:** Subagents share the parent's context window
-- **Gotcha:** Agent memory scope (user vs project vs local) affects what persists
-- **Key insight:** Subagents are the key to scaling complex tasks without context overflow
-- **Exercise focus:** Build 3 specialized agents from scratch
+### Modules 17-22: The Deep Cuts
+- **Key insight:** These are the "nitty gritty" — every flag, every command, every setting
+- **Teaching approach:** JJ already knows WHY these matter from Tier 1. Now we go comprehensive.
+- **Module 17 (CLI Flags):** The original M01 content lives here now
+- **Module 18 (Slash Commands):** Speed and muscle memory optimization
+- **Module 19 (Settings):** Every knob on the mixing board
 
-### Module 13: Skills
-- **Common misconception:** Skills are just prompt templates
-- **Gotcha:** `$ARGUMENTS` vs `$0` vs `$1` — positional arg parsing
-- **Key insight:** Skills + agents + hooks = reusable workflow packages
-- **Exercise focus:** Build a skill that combines multiple tools and agent delegation
-
-### Module 14: Headless/SDK Mode
-- **Key insight:** This is how Claude Code integrates into automated workflows
-- **Gotcha:** `--output-format json` gives structured output with session_id for chaining
-- **Exercise focus:** Build a shell script pipeline using claude -p
-
-### Module 15-18: Advanced Features
-- **Key insight for all:** These are power-user features that compound on the foundation
-- **Focus on when to use each** rather than exhaustive syntax drilling
-
-### Modules 19-23: Expert Tier
-- **Key insight:** These modules are about DESIGNING systems, not just using features
-- **Push toward Analyze-level thinking** — evaluate trade-offs, not just recall syntax
-- **Exercise focus:** Scenario-based — "Your team needs X, design the solution"
-
-### Modules 24-27: Mastery Tier
+### Modules 23-27: Mastery Tier
 - **Key insight:** Building vs using. These modules prove you understand the internals.
-- **Module 27 (Capstone):** The ultimate test. Give the learner a requirements doc, they build everything from scratch.
+- **Module 27 (Capstone):** The ultimate test. Build a complete Claude Code environment from scratch, demonstrating end-to-end vibe coding mastery.
 
 ---
 

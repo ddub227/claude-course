@@ -6,6 +6,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [2.0.0] - 2026-02-28
+
+### Changed
+- **MAJOR: Restructured entire curriculum around vibe coding mastery**
+- Tier 1 now teaches vibe coding foundations (environment, prompting, context, memory, permissions) instead of CLI flag memorization
+- Tier 2 focuses on scaling vibe coding (agents, skills, git, MCP, hooks)
+- Tier 3 covers power moves (multi-agent, models, headless, browser, debug)
+- Tier 4 is "The Deep Cuts" — comprehensive CLI flags, slash commands, settings deep-dive (original M01-M03 content)
+- Tier 5 unchanged (Mastery: build MCP servers, SDK, plugins, capstone)
+- Domain weights rebalanced: 30/25/20/15/10 (was 25/25/25/15/10)
+- Updated instructor guide per-module teaching notes with vibe coding focus
+- Updated README with vibe coder positioning
+- All teaching notes now include "vibe coder angle" perspective
+
+### Philosophy
+- "Learn to make music FIRST, then master the mixing board"
+- Every feature taught through the lens of "how does this make you a better vibe coder?"
+- Scenarios over syntax — lead with the problem, reveal the feature
+
+---
+
 ## [1.0.0] - 2026-02-27
 
 ### Added
