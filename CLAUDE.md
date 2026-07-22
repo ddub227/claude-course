@@ -57,3 +57,17 @@ Course structure: `course_config.yaml` is the machine-readable source of truth f
 - `QUIZ_CONTRACT.md` — Quiz rules and protocol
 - `progress/STATE.md` — Current position (ALWAYS read first)
 - `progress/tier-{1-5}.md` — Per-tier learning journey logs
+
+<!-- REPO-INDEXER:FILEMAP:START (generated, do not edit) -->
+## File Map
+
+_Generated from git by aegis/scripts/repo_indexer.py. 18 tracked files._
+
+Top-level directories (tracked-file count):
+
+- `progress/` — 6 files
+- `docs/` — 1 files
+
+Root files: `ASSESSMENT_RUBRIC.md`, `CHANGELOG.md`, `CLAUDE.md`, `INSTRUCTOR_GUIDE.md`, `MODULE_DEPENDENCIES.md`, `QUIZ_CONTRACT.md`, `README.md`, `SETUP_GUIDE.md`, `STUDENT_HANDBOOK.md`, `SYLLABUS.md`, `course_config.yaml`
+
+<!-- REPO-INDEXER:FILEMAP:END -->
