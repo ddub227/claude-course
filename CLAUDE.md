@@ -71,3 +71,5 @@ Top-level directories (tracked-file count):
 Root files: `ASSESSMENT_RUBRIC.md`, `CHANGELOG.md`, `CLAUDE.md`, `INSTRUCTOR_GUIDE.md`, `MODULE_DEPENDENCIES.md`, `QUIZ_CONTRACT.md`, `README.md`, `SETUP_GUIDE.md`, `STUDENT_HANDBOOK.md`, `SYLLABUS.md`, `course_config.yaml`
 
 <!-- REPO-INDEXER:FILEMAP:END -->
+
+<!-- build-ledger: CCM | tracked in JJ's global build ledger vault/career/build-ledger.md -->
